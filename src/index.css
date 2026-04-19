@@ -1,102 +1,29 @@
-* {
+﻿*, *::before, *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: #0D0D0D;
-  color: #F0F0F0;
-  font-family: 'DM Sans', sans-serif;
+  font-family: sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3 {
-  font-family: 'Syne', sans-serif;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-.login {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  gap: 16px;
+button {
+  font-family: inherit;
 }
 
-.login h1 {
-  font-size: 4rem;
-  color: #CFEE3B;
-  letter-spacing: -3px;
-}
-
-.login p {
-  color: #777;
-  margin-bottom: 16px;
-}
-
-.login button {
-  background: #CFEE3B;
-  color: #000;
-  border: none;
-  padding: 14px 32px;
-  border-radius: 14px;
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 16px;
-  padding: 24px;
-}
-
-.card {
-  background: #161616;
-  border: 1px solid #2A2A2A;
-  border-radius: 16px;
-  padding: 16px;
-}
-
-.card h3 {
-  font-size: 1rem;
-  margin-bottom: 8px;
-}
-
-.card p {
-  color: #CFEE3B;
-  font-size: 0.9rem;
-}
-
-.card button {
-  margin-top: 12px;
-  background: #F97316;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-input {
-  background: #1F1F1F;
-  border: 1px solid #2A2A2A;
-  border-radius: 12px;
-  padding: 12px 16px;
-  color: #F0F0F0;
-  font-size: 0.9rem;
-  width: 100%;
-  outline: none;
-}
-
-input:focus {
-  border-color: #CFEE3B;
-}
-
-.container {
-  padding: 24px;
-  max-width: 1200px;
-  margin: 0 auto;
+img {
+  max-width: 100%;
+  display: block;
 }

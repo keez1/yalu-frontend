@@ -1,7 +1,8 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+﻿import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
+import Index from "./pages/Index";
 import Productos from "./pages/Productos";
 import Pedidos from "./pages/Pedidos";
 import Trabajos from "./pages/Trabajos";
@@ -14,7 +15,6 @@ function PrivateRoute({ children }) {
   const { user } = useAuth();
   return user ? children : <Navigate to="/login" />;
 }
-
 function Layout({ children }) {
   return (
     <>
@@ -23,13 +23,12 @@ function Layout({ children }) {
     </>
   );
 }
-
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/" element={<Index />} />
           <Route path="/login" element={<Login />} />
           <Route path="/productos" element={<PrivateRoute><Layout><Productos /></Layout></PrivateRoute>} />
           <Route path="/productos/:id" element={<PrivateRoute><Layout><DetalleProducto /></Layout></PrivateRoute>} />
@@ -43,5 +42,4 @@ function App() {
     </AuthProvider>
   );
 }
-
 export default App;
