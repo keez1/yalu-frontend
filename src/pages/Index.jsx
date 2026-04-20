@@ -53,7 +53,7 @@ export default function Index() {
           </div>
         </div>
         <div className="yi-nav__links">
-          <a href="#catalogo">Catalogo</a>
+          <a href="/productos">Catalogo</a>
           <a href="#como">Como funciona</a>
           <a href="#nosotros">Nosotros</a>
         </div>
@@ -83,10 +83,10 @@ export default function Index() {
             ahora en un solo lugar.
           </p>
           <div className="yi-hero__btns">
-            <button className="yi-btn yi-btn--blue" onClick={() => navigate("/login")}>
+            <button className="yi-btn yi-btn--blue" onClick={() => navigate("/productos")}>
               Ver catalogo <i className="bi bi-arrow-right"></i>
             </button>
-            <button className="yi-btn yi-btn--ghost" onClick={() => navigate("/login")}>
+            <button className="yi-btn yi-btn--ghost" onClick={() => navigate("/productos")}>
               Ver ofertas <i className="bi bi-tag-fill"></i>
             </button>
           </div>
@@ -173,7 +173,7 @@ export default function Index() {
         </div>
         <div className="yi-cats__grid">
           {CATS.map((c,i) => (
-            <div key={i} className="yi-cat" style={{"--ca": c.accent,"--cb": c.color, animationDelay:`${i*0.08}s`}} onClick={() => navigate("/login")}>
+            <div key={i} className="yi-cat" style={{"--ca": c.accent,"--cb": c.color, animationDelay:`${i*0.08}s`}} onClick={() => navigate("/productos")}>
               <div className="yi-cat__ico"><i className={`bi bi-${c.icon}`}></i></div>
               <div className="yi-cat__info">
                 <strong>{c.label}</strong>
@@ -184,7 +184,7 @@ export default function Index() {
           ))}
         </div>
         <div className="yi-cats__foot">
-          <button className="yi-btn yi-btn--blue" onClick={() => navigate("/login")}>
+          <button className="yi-btn yi-btn--blue" onClick={() => navigate("/productos")}>
             Ver catalogo completo <i className="bi bi-grid-fill"></i>
           </button>
         </div>
@@ -208,7 +208,7 @@ export default function Index() {
           ))}
         </div>
         <div style={{textAlign:"center",paddingTop:"48px",position:"relative",zIndex:1}}>
-          <button className="yi-btn yi-btn--white" onClick={() => navigate("/login")}>
+          <button className="yi-btn yi-btn--white" onClick={() => navigate("/productos")}>
             Empezar ahora <i className="bi bi-arrow-right-circle-fill"></i>
           </button>
         </div>
@@ -229,7 +229,7 @@ export default function Index() {
             <div><i className="bi bi-check-circle-fill"></i> Precios justos y competitivos</div>
             <div><i className="bi bi-check-circle-fill"></i> La mayor variedad de Trujillo</div>
           </div>
-          <button className="yi-btn yi-btn--blue" onClick={() => navigate("/login")}>
+          <button className="yi-btn yi-btn--blue" onClick={() => navigate("/productos")}>
             Conocer la tienda <i className="bi bi-arrow-right"></i>
           </button>
         </div>
@@ -263,7 +263,7 @@ export default function Index() {
             Yalu no es solo una libreria. Es una plataforma disenada para que
             estudiantes, padres y docentes encuentren lo que necesitan en segundos.
           </p>
-          <button className="yi-btn yi-btn--white" onClick={() => navigate("/login")}>
+          <button className="yi-btn yi-btn--white" onClick={() => navigate("/productos")}>
             Empezar gratis <i className="bi bi-arrow-right-circle-fill"></i>
           </button>
         </div>
