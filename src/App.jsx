@@ -33,7 +33,7 @@ function App() {
             <Route path="/" element={<Index />} />
             <Route path="/login" element={<Login />} />
 
-            {/* Publicas - sin login */}
+            {/* Publicas - cualquiera puede ver productos y carrito */}
             <Route path="/productos" element={<Layout><Productos /></Layout>} />
             <Route path="/productos/:id" element={<Layout><DetalleProducto /></Layout>} />
             <Route path="/carrito" element={<Layout><Carrito /></Layout>} />
