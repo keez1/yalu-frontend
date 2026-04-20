@@ -50,6 +50,25 @@ export default function Login() {
       <div className="lp__right">
         <div className="lp__card">
 
+          <button
+            onClick={() => navigate(-1)}
+            style={{
+              position: "absolute",
+              top: "20px",
+              left: "20px",
+              background: "none",
+              border: "none",
+              color: "#888",
+              cursor: "pointer",
+              fontSize: "0.85rem",
+              display: "flex",
+              alignItems: "center",
+              gap: "6px",
+            }}
+          >
+            <i className="bi bi-arrow-left"></i> Volver
+          </button>
+
           <div className="lp__logo-wrap">
             <img src={logo} alt="Yalu" className="lp__logo" />
           </div>
