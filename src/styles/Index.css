@@ -83,12 +83,12 @@
   animation:yi-float 4s ease-in-out infinite;
 }
 .yi-hero__deco i { line-height:1; }
-.yi-hero__deco--1 { width:52px;height:52px;background:#FFF3E0;color:#F97316;top:15%;left:52%;animation-delay:0s; }
-.yi-hero__deco--2 { width:44px;height:44px;background:#E8F5E9;color:#22C55E;top:25%;left:72%;animation-delay:.6s; }
-.yi-hero__deco--3 { width:48px;height:48px;background:#EDE9FE;color:#8B5CF6;top:60%;left:78%;animation-delay:1.2s; }
-.yi-hero__deco--4 { width:40px;height:40px;background:#DBEAFE;color:#2563EB;top:72%;left:55%;animation-delay:.4s; }
-.yi-hero__deco--5 { width:46px;height:46px;background:#FCE7F3;color:#EC4899;top:12%;left:64%;animation-delay:1.8s; }
-.yi-hero__deco--6 { width:42px;height:42px;background:#FEF9C3;color:#EAB308;top:50%;left:48%;animation-delay:.9s; }
+.yi-hero__deco--1 { width:52px;height:52px;background:#FFF3E0;color:#F97316;top:30%;left:52%;animation-delay:0s; }
+.yi-hero__deco--2 { width:44px;height:44px;background:#E8F5E9;color:#22C55E;top:38%;left:72%;animation-delay:.6s; }
+.yi-hero__deco--3 { width:48px;height:48px;background:#EDE9FE;color:#8B5CF6;top:65%;left:78%;animation-delay:1.2s; }
+.yi-hero__deco--4 { width:40px;height:40px;background:#DBEAFE;color:#2563EB;top:75%;left:55%;animation-delay:.4s; }
+.yi-hero__deco--5 { width:46px;height:46px;background:#FCE7F3;color:#EC4899;top:28%;left:64%;animation-delay:1.8s; }
+.yi-hero__deco--6 { width:42px;height:42px;background:#FEF9C3;color:#EAB308;top:58%;left:48%;animation-delay:.9s; }
 @keyframes yi-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
 
 .yi-hero__content { flex:0 0 auto;max-width:520px;position:relative;z-index:2; }

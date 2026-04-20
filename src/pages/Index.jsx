@@ -64,18 +64,9 @@ export default function Index() {
 
       {/* HERO */}
       <section className="yi-hero">
-        {/* fondo decorativo */}
         <div className="yi-hero__blob yi-hero__blob--a" />
         <div className="yi-hero__blob yi-hero__blob--b" />
         <div className="yi-hero__blob yi-hero__blob--c" />
-
-        {/* circulos flotantes decorativos utiles */}
-        <div className="yi-hero__deco yi-hero__deco--1"><i className="bi bi-pencil-fill"></i></div>
-        <div className="yi-hero__deco yi-hero__deco--2"><i className="bi bi-book-fill"></i></div>
-        <div className="yi-hero__deco yi-hero__deco--3"><i className="bi bi-palette-fill"></i></div>
-        <div className="yi-hero__deco yi-hero__deco--4"><i className="bi bi-rulers"></i></div>
-        <div className="yi-hero__deco yi-hero__deco--5"><i className="bi bi-scissors"></i></div>
-        <div className="yi-hero__deco yi-hero__deco--6"><i className="bi bi-bag-fill"></i></div>
 
         <div className="yi-hero__content">
           <div className="yi-hero__pill">
@@ -106,7 +97,6 @@ export default function Index() {
           </div>
         </div>
 
-        {/* ilustracion hero â€” grid de productos */}
         <div className="yi-hero__visual">
           <div className="yi-hero__shelf">
             <div className="yi-shelf-card yi-shelf-card--a">
@@ -264,7 +254,7 @@ export default function Index() {
         </div>
       </section>
 
-      {/* ROBOT CTA con Spline */}
+      {/* ROBOT CTA */}
       <section className="yi-cta">
         <div className="yi-cta__l">
           <p className="yi-lbl yi-lbl--w">Tecnologia + Educacion</p>
@@ -291,33 +281,6 @@ export default function Index() {
           </div>
         </div>
       </section>
-
-      {/* FOOTER */}
-      <footer className="yi-foot" id="contacto">
-        <div className="yi-foot__top">
-          <div className="yi-foot__brand">
-            <img src="/src/assets/logo.png" alt="Yalu" />
-            <div>
-              <strong>Libreria Bazar Yalu</strong>
-              <span>Trujillo, Peru</span>
-            </div>
-          </div>
-          <div className="yi-foot__nav">
-            <a href="#catalogo">Catalogo</a>
-            <a href="#como">Como funciona</a>
-            <a href="#nosotros">Nosotros</a>
-            <button onClick={() => navigate("/login")}>Ingresar</button>
-          </div>
-        </div>
-        <div className="yi-foot__bot">
-          <span>2025 Libreria Bazar Yalu. Todos los derechos reservados.</span>
-          <div className="yi-foot__social">
-            <a href="#" aria-label="Instagram"><i className="bi bi-instagram"></i></a>
-            <a href="#" aria-label="Facebook"><i className="bi bi-facebook"></i></a>
-            <a href="#" aria-label="WhatsApp"><i className="bi bi-whatsapp"></i></a>
-          </div>
-        </div>
-      </footer>
 
     </div>
   );
