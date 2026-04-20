@@ -48,7 +48,6 @@ export default function Productos() {
     e.stopPropagation();
     agregarItem({ id: p.id, nombre: p.nombre, imagen: p.imagen_principal || null, precio: p.precio_base, variante_id: null, variante_nombre: null, cantidad: 1 });
   };
-
   return (
     <div style={{ background: "#f8faff", minHeight: "100vh", fontFamily: "'Nunito', sans-serif" }}>
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "32px 24px" }}>
