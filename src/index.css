@@ -1,29 +1,52 @@
-﻿*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+﻿/* ===== TIPOGRAFIA GLOBAL PRO ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+  --font-main: 'Inter', sans-serif;
+  --font-title: 'Playfair Display', serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
+/* Aplica a todo tu proyecto */
 body {
-  font-family: sans-serif;
+  font-family: var(--font-main);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+/* Contenedor principal */
+.yi {
+  font-family: var(--font-main);
 }
 
-button {
-  font-family: inherit;
+/* Títulos elegantes */
+.yi h1,
+.yi h2,
+.yi h3 {
+  font-family: var(--font-title);
+  letter-spacing: -0.5px;
 }
 
-img {
-  max-width: 100%;
-  display: block;
+/* Navbar consistente */
+.yi-nav {
+  font-family: var(--font-main);
+}
+
+/* Texto normal */
+.yi p,
+.yi span,
+.yi a,
+.yi button {
+  font-family: var(--font-main);
+}
+
+/* ===== FORZAR TIPOGRAFIA GLOBAL ===== */
+.yi,
+.yi * {
+  font-family: var(--font-main) !important;
+}
+
+.yi h1,
+.yi h2,
+.yi h3 {
+  font-family: var(--font-title) !important;
 }
