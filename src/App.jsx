@@ -32,9 +32,13 @@ function App() {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/productos" element={<PrivateRoute><Layout><Productos /></Layout></PrivateRoute>} />
-            <Route path="/productos/:id" element={<PrivateRoute><Layout><DetalleProducto /></Layout></PrivateRoute>} />
-            <Route path="/carrito" element={<PrivateRoute><Layout><Carrito /></Layout></PrivateRoute>} />
+
+            {/* Publicas - sin login */}
+            <Route path="/productos" element={<Layout><Productos /></Layout>} />
+            <Route path="/productos/:id" element={<Layout><DetalleProducto /></Layout>} />
+            <Route path="/carrito" element={<Layout><Carrito /></Layout>} />
+
+            {/* Privadas - requieren login */}
             <Route path="/checkout" element={<PrivateRoute><Layout><Checkout /></Layout></PrivateRoute>} />
             <Route path="/pedidos" element={<PrivateRoute><Layout><Pedidos /></Layout></PrivateRoute>} />
             <Route path="/trabajos" element={<PrivateRoute><Layout><Trabajos /></Layout></PrivateRoute>} />
