@@ -1,5 +1,6 @@
 ﻿import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "./context/AuthContext";
+import { CartProvider } from "./context/CartContext";
 import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
 import Index from "./pages/Index";
@@ -26,19 +27,21 @@ function Layout({ children }) {
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/productos" element={<PrivateRoute><Layout><Productos /></Layout></PrivateRoute>} />
-          <Route path="/productos/:id" element={<PrivateRoute><Layout><DetalleProducto /></Layout></PrivateRoute>} />
-          <Route path="/carrito" element={<PrivateRoute><Layout><Carrito /></Layout></PrivateRoute>} />
-          <Route path="/checkout" element={<PrivateRoute><Layout><Checkout /></Layout></PrivateRoute>} />
-          <Route path="/pedidos" element={<PrivateRoute><Layout><Pedidos /></Layout></PrivateRoute>} />
-          <Route path="/trabajos" element={<PrivateRoute><Layout><Trabajos /></Layout></PrivateRoute>} />
-          <Route path="/perfil" element={<PrivateRoute><Layout><Perfil /></Layout></PrivateRoute>} />
-        </Routes>
-      </BrowserRouter>
+      <CartProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/productos" element={<PrivateRoute><Layout><Productos /></Layout></PrivateRoute>} />
+            <Route path="/productos/:id" element={<PrivateRoute><Layout><DetalleProducto /></Layout></PrivateRoute>} />
+            <Route path="/carrito" element={<PrivateRoute><Layout><Carrito /></Layout></PrivateRoute>} />
+            <Route path="/checkout" element={<PrivateRoute><Layout><Checkout /></Layout></PrivateRoute>} />
+            <Route path="/pedidos" element={<PrivateRoute><Layout><Pedidos /></Layout></PrivateRoute>} />
+            <Route path="/trabajos" element={<PrivateRoute><Layout><Trabajos /></Layout></PrivateRoute>} />
+            <Route path="/perfil" element={<PrivateRoute><Layout><Perfil /></Layout></PrivateRoute>} />
+          </Routes>
+        </BrowserRouter>
+      </CartProvider>
     </AuthProvider>
   );
 }

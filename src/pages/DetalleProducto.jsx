@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import api from "../api/axios";
+import { useCart } from "../context/CartContext";
 
 export default function DetalleProducto() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { agregarItem } = useCart();
   const [producto, setProducto] = useState(null);
   const [varianteSeleccionada, setVarianteSeleccionada] = useState(null);
   const [fotoActual, setFotoActual] = useState(0);
@@ -19,19 +21,15 @@ export default function DetalleProducto() {
   }, [id]);
 
   const agregarAlCarrito = () => {
-    const carrito = JSON.parse(localStorage.getItem("carrito") || "[]");
-    const item = {
+    agregarItem({
       id: producto.id,
       nombre: producto.nombre,
+      imagen: producto.imagen_principal || null,
       precio: varianteSeleccionada ? varianteSeleccionada.precio : producto.precio_base,
       variante_id: varianteSeleccionada?.id || null,
       variante_nombre: varianteSeleccionada?.nombre_variante || null,
       cantidad,
-    };
-    const existente = carrito.findIndex((c) => c.id === item.id && c.variante_id === item.variante_id);
-    if (existente >= 0) carrito[existente].cantidad += cantidad;
-    else carrito.push(item);
-    localStorage.setItem("carrito", JSON.stringify(carrito));
+    });
     setAgregado(true);
     setTimeout(() => setAgregado(false), 2000);
   };
@@ -43,14 +41,14 @@ export default function DetalleProducto() {
   return (
     <div className="container py-4">
       <button onClick={() => navigate(-1)} style={{ background: "none", border: "none", color: "#777", cursor: "pointer", marginBottom: "20px", fontSize: "0.9rem" }}>
-        ← Volver
+        â† Volver
       </button>
       <div className="row g-4">
         <div className="col-12 col-md-6">
           <div style={{ background: "#161616", borderRadius: "16px", overflow: "hidden", marginBottom: "12px" }}>
             {producto.imagenes?.length > 0
               ? <img src={producto.imagenes[fotoActual].imagen} alt={producto.nombre} style={{ width: "100%", height: "320px", objectFit: "cover" }} />
-              : <div style={{ height: "320px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "4rem" }}>📚</div>
+              : <div style={{ height: "320px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "4rem" }}>ðŸ“š</div>
             }
           </div>
           {producto.imagenes?.length > 1 && (
@@ -64,7 +62,7 @@ export default function DetalleProducto() {
         </div>
 
         <div className="col-12 col-md-6">
-          <p style={{ color: "#777", fontSize: "0.8rem", marginBottom: "4px" }}>{producto.categoria_nombre} · {producto.marca_nombre}</p>
+          <p style={{ color: "#777", fontSize: "0.8rem", marginBottom: "4px" }}>{producto.categoria_nombre} Â· {producto.marca_nombre}</p>
           <h2 style={{ fontFamily: "'Syne',sans-serif", fontWeight: 700, marginBottom: "8px" }}>{producto.nombre}</h2>
           <p style={{ color: "#aaa", fontSize: "0.9rem", marginBottom: "20px" }}>{producto.descripcion}</p>
 
@@ -90,7 +88,7 @@ export default function DetalleProducto() {
 
           <div className="d-flex align-items-center gap-3 mb-3">
             <div style={{ display: "flex", alignItems: "center", background: "#1F1F1F", borderRadius: "10px", overflow: "hidden" }}>
-              <button onClick={() => setCantidad(Math.max(1, cantidad - 1))} style={{ background: "none", border: "none", color: "#fff", padding: "8px 14px", cursor: "pointer", fontSize: "1.1rem" }}>−</button>
+              <button onClick={() => setCantidad(Math.max(1, cantidad - 1))} style={{ background: "none", border: "none", color: "#fff", padding: "8px 14px", cursor: "pointer", fontSize: "1.1rem" }}>âˆ’</button>
               <span style={{ padding: "0 12px", fontWeight: 600 }}>{cantidad}</span>
               <button onClick={() => setCantidad(cantidad + 1)} style={{ background: "none", border: "none", color: "#fff", padding: "8px 14px", cursor: "pointer", fontSize: "1.1rem" }}>+</button>
             </div>
@@ -102,8 +100,19 @@ export default function DetalleProducto() {
             padding: "14px", fontWeight: 700, fontSize: "1rem", cursor: "pointer",
             transition: "background 0.3s"
           }}>
-            {agregado ? "✓ Agregado al carrito" : "+ Agregar al carrito"}
+            {agregado ? "âœ“ Agregado al carrito" : "+ Agregar al carrito"}
           </button>
+
+          {agregado && (
+            <button onClick={() => navigate("/carrito")} style={{
+              width: "100%", background: "transparent", color: "#CFEE3B",
+              border: "1px solid #CFEE3B", borderRadius: "12px",
+              padding: "12px", fontWeight: 600, fontSize: "0.9rem",
+              cursor: "pointer", marginTop: "10px", transition: "all 0.3s"
+            }}>
+              Ver carrito â†’
+            </button>
+          )}
         </div>
       </div>
     </div>
