@@ -36,63 +36,66 @@ export default function DetalleProducto() {
     setTimeout(() => setAgregado(false), 2000);
   };
 
-  if (!producto) return <div className="container py-4"><p style={{ color: "#777" }}>Cargando...</p></div>;
+  if (!producto) return <div className="container py-4"><p style={{ color: "#999" }}>Cargando...</p></div>;
 
   const precio = varianteSeleccionada ? varianteSeleccionada.precio : producto.precio;
+  const imagenUrl = producto.imagenes?.[fotoActual]?.imagen_url || producto.imagenes?.[fotoActual]?.imagen;
 
   return (
     <div className="container py-4">
-      <button onClick={() => navigate(-1)} style={{ background: "none", border: "none", color: "#777", cursor: "pointer", marginBottom: "20px", fontSize: "0.9rem" }}>
+      <button onClick={() => navigate(-1)} style={{ background: "none", border: "none", color: "#999", cursor: "pointer", marginBottom: "20px", fontSize: "0.9rem" }}>
         ← Volver
       </button>
       <div className="row g-4">
         <div className="col-12 col-md-6">
-          <div style={{ background: "#161616", borderRadius: "16px", overflow: "hidden", marginBottom: "12px" }}>
+          <div style={{ background: "#F8F8F8", borderRadius: "16px", overflow: "hidden", marginBottom: "12px" }}>
             {producto.imagenes?.length > 0
-              ? <img src={producto.imagenes[fotoActual].imagen} alt={producto.nombre} style={{ width: "100%", height: "320px", objectFit: "cover" }} />
-              : <div style={{ height: "320px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "4rem" }}>📚</div>
+              ? <img src={imagenUrl} alt={producto.nombre} style={{ width: "100%", height: "360px", objectFit: "cover" }} />
+              : <div style={{ height: "360px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "4rem", opacity: 0.2 }}>📚</div>
             }
           </div>
           {producto.imagenes?.length > 1 && (
             <div className="d-flex gap-2">
               {producto.imagenes.map((img, i) => (
-                <img key={i} src={img.imagen} alt="" onClick={() => setFotoActual(i)}
-                  style={{ width: "60px", height: "60px", objectFit: "cover", borderRadius: "8px", cursor: "pointer", border: fotoActual === i ? "2px solid #CFEE3B" : "2px solid transparent" }} />
+                <img key={i} src={img.imagen_url || img.imagen} alt="" onClick={() => setFotoActual(i)}
+                  style={{ width: "60px", height: "60px", objectFit: "cover", borderRadius: "8px", cursor: "pointer", border: fotoActual === i ? "2px solid #F97316" : "2px solid #E8E8E8" }} />
               ))}
             </div>
           )}
         </div>
 
         <div className="col-12 col-md-6">
-          <p style={{ color: "#777", fontSize: "0.8rem", marginBottom: "4px" }}>{producto.categoria_nombre} · {producto.marca_nombre}</p>
-          <h2 style={{ fontFamily: "'Syne',sans-serif", fontWeight: 700, marginBottom: "8px" }}>{producto.nombre}</h2>
-          <p style={{ color: "#aaa", fontSize: "0.9rem", marginBottom: "20px" }}>{producto.descripcion}</p>
+          <p style={{ color: "#F97316", fontSize: "0.75rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "4px" }}>
+            {producto.categoria_nombre} · {producto.marca_nombre}
+          </p>
+          <h2 style={{ fontWeight: 700, fontSize: "1.5rem", marginBottom: "8px", color: "#1a1a1a", lineHeight: 1.3 }}>{producto.nombre}</h2>
+          <p style={{ color: "#666", fontSize: "0.9rem", marginBottom: "24px", lineHeight: 1.6 }}>{producto.descripcion}</p>
 
           {producto.variantes?.length > 0 && (
-            <div style={{ marginBottom: "20px" }}>
-              <p style={{ color: "#777", fontSize: "0.8rem", marginBottom: "8px" }}>VARIANTE</p>
+            <div style={{ marginBottom: "24px" }}>
+              <p style={{ color: "#999", fontSize: "0.75rem", fontWeight: 600, textTransform: "uppercase", marginBottom: "8px" }}>Variante</p>
               <div className="d-flex flex-wrap gap-2">
                 {producto.variantes.map((v) => (
                   <button key={v.id} onClick={() => setVarianteSeleccionada(v)} style={{
-                    background: varianteSeleccionada?.id === v.id ? "rgba(207,238,59,0.15)" : "#1F1F1F",
-                    border: varianteSeleccionada?.id === v.id ? "1px solid #CFEE3B" : "1px solid #2A2A2A",
-                    color: varianteSeleccionada?.id === v.id ? "#CFEE3B" : "#ccc",
-                    borderRadius: "8px", padding: "6px 14px", cursor: "pointer", fontSize: "0.85rem"
+                    background: varianteSeleccionada?.id === v.id ? "#F97316" : "#F5F5F5",
+                    border: "none",
+                    color: varianteSeleccionada?.id === v.id ? "#fff" : "#333",
+                    borderRadius: "8px", padding: "6px 14px", cursor: "pointer", fontSize: "0.85rem", fontWeight: 500
                   }}>{v.nombre_variante}</button>
                 ))}
               </div>
             </div>
           )}
 
-          <p style={{ fontFamily: "'Syne',sans-serif", fontWeight: 800, fontSize: "2rem", color: "#CFEE3B", marginBottom: "20px" }}>
+          <p style={{ fontWeight: 800, fontSize: "2rem", color: "#1a1a1a", marginBottom: "24px" }}>
             S/. {precio}
           </p>
 
-          <div className="d-flex align-items-center gap-3 mb-3">
-            <div style={{ display: "flex", alignItems: "center", background: "#1F1F1F", borderRadius: "10px", overflow: "hidden" }}>
-              <button onClick={() => setCantidad(Math.max(1, cantidad - 1))} style={{ background: "none", border: "none", color: "#fff", padding: "8px 14px", cursor: "pointer", fontSize: "1.1rem" }}>−</button>
-              <span style={{ padding: "0 12px", fontWeight: 600 }}>{cantidad}</span>
-              <button onClick={() => setCantidad(cantidad + 1)} style={{ background: "none", border: "none", color: "#fff", padding: "8px 14px", cursor: "pointer", fontSize: "1.1rem" }}>+</button>
+          <div className="d-flex align-items-center gap-3 mb-4">
+            <div style={{ display: "flex", alignItems: "center", background: "#F5F5F5", borderRadius: "10px", overflow: "hidden" }}>
+              <button onClick={() => setCantidad(Math.max(1, cantidad - 1))} style={{ background: "none", border: "none", color: "#1a1a1a", padding: "8px 16px", cursor: "pointer", fontSize: "1.1rem" }}>−</button>
+              <span style={{ padding: "0 12px", fontWeight: 600, color: "#1a1a1a" }}>{cantidad}</span>
+              <button onClick={() => setCantidad(cantidad + 1)} style={{ background: "none", border: "none", color: "#1a1a1a", padding: "8px 16px", cursor: "pointer", fontSize: "1.1rem" }}>+</button>
             </div>
           </div>
 
@@ -108,4 +111,4 @@ export default function DetalleProducto() {
       </div>
     </div>
   );
-} 
+}

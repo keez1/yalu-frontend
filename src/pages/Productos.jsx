@@ -24,42 +24,62 @@ export default function Productos() {
       {/* Header */}
       <div className="d-flex align-items-center justify-content-between mb-3">
         <div>
-          <p style={{ color: "#F97316", fontSize: "0.75rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "2px" }}>
+          <p style={{
+            color: "#F97316", fontSize: "0.7rem", fontWeight: 600,
+            textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "2px",
+            fontFamily: "'Inter', sans-serif"
+          }}>
             Librería Bazar Yalu
           </p>
-          <h2 style={{ fontFamily: "'Syne',sans-serif", fontWeight: 700, fontSize: "1.6rem", letterSpacing: "-0.3px", marginBottom: 0 }}>
+          <h2 style={{
+            fontFamily: "'Syne', sans-serif", fontWeight: 700,
+            fontSize: "1.6rem", letterSpacing: "-0.3px", marginBottom: 0, color: "#111"
+          }}>
             Catálogo
           </h2>
         </div>
         {filtrados.length > 0 && (
-          <span style={{ color: "#999", fontSize: "0.8rem" }}>{filtrados.length} productos</span>
+          <span style={{ color: "#bbb", fontSize: "0.78rem", fontFamily: "'Inter', sans-serif" }}>
+            {filtrados.length} productos
+          </span>
         )}
       </div>
 
       {/* Buscador */}
       <div style={{ position: "relative", marginBottom: "28px" }}>
-        <span style={{ position: "absolute", left: "14px", top: "50%", transform: "translateY(-50%)", color: "#bbb", fontSize: "0.9rem" }}>🔍</span>
+        <span style={{
+          position: "absolute", left: "14px", top: "50%",
+          transform: "translateY(-50%)", color: "#ccc", fontSize: "0.85rem"
+        }}>🔍</span>
         <input
           placeholder="Buscar productos..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           style={{
             width: "100%", padding: "11px 16px 11px 40px",
-            border: "1px solid #E8E8E8", borderRadius: "10px",
-            fontSize: "0.9rem", outline: "none", color: "#1a1a1a",
-            background: "#FAFAFA", transition: "border-color .2s, background .2s"
+            border: "1px solid #EBEBEB", borderRadius: "10px",
+            fontSize: "0.88rem", outline: "none", color: "#1a1a1a",
+            background: "#FAFAFA", fontFamily: "'Inter', sans-serif",
+            transition: "border-color .2s, background .2s"
           }}
-          onFocus={e => { e.target.style.borderColor = "#ddd"; e.target.style.background = "#fff"; }}
-          onBlur={e => { e.target.style.borderColor = "#E8E8E8"; e.target.style.background = "#FAFAFA"; }}
+          onFocus={e => { e.target.style.borderColor = "#F97316"; e.target.style.background = "#fff"; }}
+          onBlur={e => { e.target.style.borderColor = "#EBEBEB"; e.target.style.background = "#FAFAFA"; }}
         />
       </div>
 
-      {/* Loading */}
+      {/* Loading skeletons */}
       {loading && (
         <div className="row g-3">
           {[1,2,3,4,5,6,7,8].map(i => (
             <div key={i} className="col-6 col-md-4 col-lg-3">
-              <div style={{ height: "240px", background: "#F5F5F5", borderRadius: "16px" }} />
+              <div style={{ borderRadius: "16px", overflow: "hidden", background: "#F5F5F5" }}>
+                <div style={{ height: "160px", background: "#EEEEEE" }} />
+                <div style={{ padding: "12px 14px 14px" }}>
+                  <div style={{ height: "10px", background: "#E8E8E8", borderRadius: "4px", width: "40%", marginBottom: "8px" }} />
+                  <div style={{ height: "14px", background: "#E8E8E8", borderRadius: "4px", width: "80%", marginBottom: "6px" }} />
+                  <div style={{ height: "14px", background: "#E8E8E8", borderRadius: "4px", width: "60%" }} />
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -69,7 +89,7 @@ export default function Productos() {
       {!loading && filtrados.length === 0 && (
         <div className="text-center py-5">
           <div style={{ fontSize: "2.5rem", marginBottom: "12px" }}>📦</div>
-          <p style={{ color: "#999", fontSize: "0.9rem" }}>
+          <p style={{ color: "#bbb", fontSize: "0.9rem", fontFamily: "'Inter', sans-serif" }}>
             {search ? `Sin resultados para "${search}"` : "No hay productos disponibles"}
           </p>
         </div>
@@ -92,45 +112,53 @@ export default function Productos() {
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.boxShadow = "0 6px 20px rgba(0,0,0,0.07)";
+                e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.06)";
+                e.currentTarget.style.borderColor = "#E8E8E8";
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.transform = "translateY(0)";
                 e.currentTarget.style.boxShadow = "none";
+                e.currentTarget.style.borderColor = "#F0F0F0";
               }}
             >
               {/* Imagen */}
               <div style={{
-                height: "160px",
-                background: "#F8F8F8",
+                height: "160px", background: "#F8F8F8",
                 display: "flex", alignItems: "center", justifyContent: "center",
-                overflow: "hidden"
+                overflow: "hidden", position: "relative"
               }}>
                 {p.imagen_principal
-                  ? <img src={p.imagen_principal} alt={p.nombre} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                  : <span style={{ fontSize: "2rem", opacity: 0.3 }}>📚</span>
+                  ? <img
+                      src={p.imagen_principal}
+                      alt={p.nombre}
+                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    />
+                  : <span style={{ fontSize: "2rem", opacity: 0.15 }}>📚</span>
                 }
               </div>
 
               {/* Info */}
               <div style={{ padding: "12px 14px 14px" }}>
                 <p style={{
-                  fontSize: "0.7rem", color: "#F97316", fontWeight: 600,
-                  marginBottom: "3px", textTransform: "uppercase", letterSpacing: "0.05em"
+                  fontSize: "0.68rem", color: "#F97316", fontWeight: 600,
+                  marginBottom: "4px", textTransform: "uppercase",
+                  letterSpacing: "0.06em", fontFamily: "'Inter', sans-serif"
                 }}>{p.categoria_nombre}</p>
                 <p style={{
-                  fontSize: "0.88rem", fontWeight: 600, color: "#1a1a1a",
+                  fontSize: "0.875rem", fontWeight: 600, color: "#111",
                   marginBottom: "10px", lineHeight: 1.35,
+                  fontFamily: "'Inter', sans-serif",
                   display: "-webkit-box", WebkitLineClamp: 2,
                   WebkitBoxOrient: "vertical", overflow: "hidden"
                 }}>{p.nombre}</p>
                 <div className="d-flex align-items-center justify-content-between">
                   <span style={{
-                    fontFamily: "'Syne',sans-serif", fontWeight: 800,
-                    fontSize: "1rem", color: "#1a1a1a"
+                    fontFamily: "'Inter', sans-serif",
+                    fontWeight: 700, fontSize: "0.95rem", color: "#111"
                   }}>S/. {p.precio}</span>
                   <span style={{
-                    fontSize: "0.75rem", color: "#999", fontWeight: 500
+                    fontSize: "0.72rem", color: "#ccc",
+                    fontFamily: "'Inter', sans-serif", fontWeight: 500
                   }}>Ver →</span>
                 </div>
               </div>
