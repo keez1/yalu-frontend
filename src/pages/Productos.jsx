@@ -66,10 +66,10 @@ export default function Productos() {
                   : "📚"}
               </div>
               <div style={{ padding: "14px" }}>
-                <div style={{ fontSize: "0.85rem", fontWeight: 600, marginBottom: "4px" }}>{p.nombre}</div>
-                <div style={{ fontSize: "0.75rem", color: "#777", marginBottom: "8px" }}>{p.categoria_nombre}</div>
+                <div style={{ fontSize: "0.85rem", fontWeight: 600, marginBottom: "4px", color: "#fff" }}>{p.nombre}</div>
+                <div style={{ fontSize: "0.75rem", color: "#aaa", marginBottom: "8px" }}>{p.categoria_nombre}</div>
                 <div style={{ fontFamily: "'Syne',sans-serif", fontWeight: 700, color: "#CFEE3B", fontSize: "1rem", marginBottom: "10px" }}>
-                  S/. {p.precio_base}
+                  S/. {p.precio}
                 </div>
                 <button onClick={() => navigate(`/productos/${p.id}`)} style={{
                   width: "100%", background: "#F97316", color: "#fff",

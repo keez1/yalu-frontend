@@ -23,7 +23,7 @@ export default function DetalleProducto() {
     const item = {
       id: producto.id,
       nombre: producto.nombre,
-      precio: varianteSeleccionada ? varianteSeleccionada.precio : producto.precio_base,
+      precio: varianteSeleccionada ? varianteSeleccionada.precio : producto.precio,
       variante_id: varianteSeleccionada?.id || null,
       variante_nombre: varianteSeleccionada?.nombre_variante || null,
       cantidad,
@@ -38,7 +38,7 @@ export default function DetalleProducto() {
 
   if (!producto) return <div className="container py-4"><p style={{ color: "#777" }}>Cargando...</p></div>;
 
-  const precio = varianteSeleccionada ? varianteSeleccionada.precio : producto.precio_base;
+  const precio = varianteSeleccionada ? varianteSeleccionada.precio : producto.precio;
 
   return (
     <div className="container py-4">
@@ -108,4 +108,4 @@ export default function DetalleProducto() {
       </div>
     </div>
   );
-}
+} 

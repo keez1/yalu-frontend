@@ -27,3 +27,7 @@ img {
   max-width: 100%;
   display: block;
 }
+body {
+  background-color: #ffffff;
+  color: #1a1a1a;
+}

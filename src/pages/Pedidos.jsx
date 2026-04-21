@@ -15,7 +15,8 @@ export default function Pedidos() {
   const [abierto, setAbierto] = useState(null);
 
   useEffect(() => {
-    api.get("/ventas/pedidos/")
+    const uid = localStorage.getItem("uid");
+    api.get(`/ventas/pedidos/?uid=${uid}`)
       .then((res) => setPedidos(res.data))
       .finally(() => setLoading(false));
   }, []);
@@ -26,15 +27,15 @@ export default function Pedidos() {
     <div className="container py-4">
       <div className="d-flex align-items-center justify-content-between mb-4">
         <h2 style={{ fontFamily: "'Syne',sans-serif", fontWeight: 700 }}>Mis Pedidos</h2>
-        <span style={{ color: "#777", fontSize: "0.85rem" }}>{pedidos.length} pedidos</span>
+        <span style={{ color: "#555", fontSize: "0.85rem" }}>{pedidos.length} pedidos</span>
       </div>
 
-      {loading && <p style={{ color: "#777" }}>Cargando...</p>}
+      {loading && <p style={{ color: "#555" }}>Cargando...</p>}
 
       {!loading && pedidos.length === 0 && (
         <div className="text-center py-5">
           <div style={{ fontSize: "3rem" }}>📦</div>
-          <p style={{ color: "#777", marginTop: "12px" }}>No tienes pedidos aún</p>
+          <p style={{ color: "#555", marginTop: "12px" }}>No tienes pedidos aún</p>
         </div>
       )}
 
@@ -45,13 +46,13 @@ export default function Pedidos() {
           return (
             <div key={p.id} style={{ background: "#161616", border: "1px solid #2A2A2A", borderRadius: "16px", overflow: "hidden" }}>
               <div onClick={() => toggleDetalle(p.id)} style={{ padding: "20px", cursor: "pointer" }}
-                onMouseEnter={e => e.currentTarget.style.background = "#1a1a1a"}
-                onMouseLeave={e => e.currentTarget.style.background = "transparent"}
+                onMouseEnter={e => e.currentTarget.style.background = "#1e1e1e"}
+                onMouseLeave={e => e.currentTarget.style.background = "#161616"}
               >
                 <div className="d-flex justify-content-between align-items-center">
                   <div>
-                    <p style={{ fontWeight: 700, marginBottom: "4px" }}>Pedido #{p.codigo}</p>
-                    <p style={{ color: "#777", fontSize: "0.8rem", marginBottom: 0 }}>
+                    <p style={{ fontWeight: 700, marginBottom: "4px", color: "#fff" }}>Pedido #{p.codigo}</p>
+                    <p style={{ color: "#aaa", fontSize: "0.8rem", marginBottom: 0 }}>
                       {new Date(p.fecha).toLocaleDateString("es-PE", { day: "2-digit", month: "short", year: "numeric" })}
                       {" · "}{p.metodo_entrega}
                     </p>
@@ -63,7 +64,7 @@ export default function Pedidos() {
                     <span style={{ background: estilo.bg, color: estilo.color, fontSize: "0.75rem", padding: "4px 12px", borderRadius: "20px" }}>
                       {p.estado.replace("_", " ")}
                     </span>
-                    <span style={{ color: "#555" }}>{isOpen ? "▲" : "▼"}</span>
+                    <span style={{ color: "#aaa" }}>{isOpen ? "▲" : "▼"}</span>
                   </div>
                 </div>
               </div>
@@ -79,16 +80,16 @@ export default function Pedidos() {
                         </div>
                       ))}
                       <div style={{ borderTop: "1px solid #2A2A2A", marginTop: "8px", paddingTop: "8px" }} className="d-flex justify-content-between">
-                        <span style={{ color: "#777", fontSize: "0.8rem" }}>Envío</span>
-                        <span style={{ fontSize: "0.85rem" }}>S/. {p.costo_envio}</span>
+                        <span style={{ color: "#aaa", fontSize: "0.8rem" }}>Envío</span>
+                        <span style={{ fontSize: "0.85rem", color: "#fff" }}>S/. {p.costo_envio}</span>
                       </div>
                       <div className="d-flex justify-content-between">
-                        <span style={{ fontWeight: 700 }}>Total</span>
+                        <span style={{ fontWeight: 700, color: "#fff" }}>Total</span>
                         <span style={{ fontWeight: 700, color: "#CFEE3B" }}>S/. {p.total}</span>
                       </div>
                     </div>
                   ) : (
-                    <p style={{ color: "#777", fontSize: "0.85rem", marginBottom: 0 }}>Sin detalles disponibles</p>
+                    <p style={{ color: "#aaa", fontSize: "0.85rem", marginBottom: 0 }}>Sin detalles disponibles</p>
                   )}
                 </div>
               )}

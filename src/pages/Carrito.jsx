@@ -26,7 +26,7 @@ export default function Carrito() {
       {carrito.length === 0 && (
         <div className="text-center py-5">
           <div style={{ fontSize: "3rem" }}>🛒</div>
-          <p style={{ color: "#777", marginTop: "12px" }}>Tu carrito está vacío</p>
+          <p style={{ color: "#555", marginTop: "12px" }}>Tu carrito está vacío</p>
           <button onClick={() => navigate("/productos")} style={{
             background: "#F97316", color: "#fff", border: "none",
             borderRadius: "12px", padding: "10px 24px", cursor: "pointer", fontWeight: 600, marginTop: "12px"
@@ -41,13 +41,13 @@ export default function Carrito() {
               <div key={i} style={{ background: "#161616", border: "1px solid #2A2A2A", borderRadius: "14px", padding: "16px" }}
                 className="d-flex justify-content-between align-items-center">
                 <div>
-                  <p style={{ fontWeight: 600, marginBottom: "2px" }}>{item.nombre}</p>
-                  {item.variante_nombre && <p style={{ color: "#777", fontSize: "0.8rem", marginBottom: "4px" }}>{item.variante_nombre}</p>}
+                  <p style={{ fontWeight: 600, marginBottom: "2px", color: "#fff" }}>{item.nombre}</p>
+                  {item.variante_nombre && <p style={{ color: "#aaa", fontSize: "0.8rem", marginBottom: "4px" }}>{item.variante_nombre}</p>}
                   <p style={{ color: "#CFEE3B", fontWeight: 700, marginBottom: 0 }}>S/. {item.precio}</p>
                 </div>
-                <div style={{ display: "flex", alignItems: "center", background: "#1F1F1F", borderRadius: "10px", overflow: "hidden" }}>
+                <div style={{ display: "flex", alignItems: "center", background: "#2A2A2A", borderRadius: "10px", overflow: "hidden" }}>
                   <button onClick={() => actualizar(i, item.cantidad - 1)} style={{ background: "none", border: "none", color: "#fff", padding: "6px 12px", cursor: "pointer" }}>−</button>
-                  <span style={{ padding: "0 10px", fontWeight: 600 }}>{item.cantidad}</span>
+                  <span style={{ padding: "0 10px", fontWeight: 600, color: "#fff" }}>{item.cantidad}</span>
                   <button onClick={() => actualizar(i, item.cantidad + 1)} style={{ background: "none", border: "none", color: "#fff", padding: "6px 12px", cursor: "pointer" }}>+</button>
                 </div>
               </div>
@@ -56,12 +56,12 @@ export default function Carrito() {
 
           <div style={{ background: "#161616", border: "1px solid #2A2A2A", borderRadius: "14px", padding: "20px" }}>
             <div className="d-flex justify-content-between mb-2">
-              <span style={{ color: "#777" }}>Subtotal</span>
-              <span style={{ fontWeight: 600 }}>S/. {subtotal.toFixed(2)}</span>
+              <span style={{ color: "#aaa" }}>Subtotal</span>
+              <span style={{ fontWeight: 600, color: "#fff" }}>S/. {subtotal.toFixed(2)}</span>
             </div>
             <div className="d-flex justify-content-between mb-3">
-              <span style={{ color: "#777" }}>Envío</span>
-              <span style={{ color: "#777" }}>Se calcula en checkout</span>
+              <span style={{ color: "#aaa" }}>Envío</span>
+              <span style={{ color: "#aaa" }}>Se calcula en checkout</span>
             </div>
             <button onClick={() => navigate("/checkout")} style={{
               width: "100%", background: "#F97316", color: "#fff",
